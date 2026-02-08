@@ -1,0 +1,207 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "public/**/*.html",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.js",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.css",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.png",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.jpg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.svg",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "public/**/*.ico",
+      "use": "@vercel/static"
+    },
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "public"
+      }
+    }
+  ],
+  
+  "routes": [
+    {
+      "src": "/",
+      "dest": "/public/index.html"
+    },
+    {
+      "src": "/(.*)",
+      "dest": "/public/$1"
+    },
+    {
+      "src": "/assets/(.*)",
+      "headers": {
+        "cache-control": "public, max-age=31536000, immutable"
+      },
+      "dest": "/public/assets/$1"
+    },
+    {
+      "src": "/api/status",
+      "dest": "/api/status.js"
+    },
+    {
+      "handle": "filesystem"
+    },
+    {
+      "src": "/(.*)",
+      "status": 404,
+      "dest": "/public/404.html"
+    }
+  ],
+  
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "X-Content-Type-Options",
+          "value": "nosniff"
+        },
+        {
+          "key": "X-Frame-Options",
+          "value": "DENY"
+        },
+        {
+          "key": "X-XSS-Protection",
+          "value": "1; mode=block"
+        },
+        {
+          "key": "Referrer-Policy",
+          "value": "strict-origin-when-cross-origin"
+        },
+        {
+          "key": "Permissions-Policy",
+          "value": "camera=(), microphone=(), geolocation=()"
+        },
+        {
+          "key": "Content-Security-Policy",
+          "value": "default-src 'self'; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; connect-src 'self' https://api-faa.my.id;"
+        }
+      ]
+    },
+    {
+      "source": "/assets/(.*)\\.(js|css|png|jpg|svg|ico)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
+        }
+      ]
+    }
+  ],
+  
+  "rewrites": [
+    {
+      "source": "/dashboard",
+      "destination": "/public/index.html"
+    },
+    {
+      "source": "/spam",
+      "destination": "/public/index.html"
+    },
+    {
+      "source": "/ngl",
+      "destination": "/public/index.html"
+    }
+  ],
+  
+  "redirects": [
+    {
+      "source": "/home",
+      "destination": "/",
+      "permanent": true
+    },
+    {
+      "source": "/github",
+      "destination": "https://github.com/yourusername/ngl-spammer-pro",
+      "permanent": false
+    },
+    {
+      "source": "/docs",
+      "destination": "https://github.com/yourusername/ngl-spammer-pro#readme",
+      "permanent": false
+    }
+  ],
+  
+  "env": {
+    "NODE_VERSION": "18",
+    "NODE_ENV": "production",
+    "APP_NAME": "NGL Spammer Pro",
+    "APP_VERSION": "2.1.0",
+    "APP_AUTHOR": "Z- Quantum Engine"
+  },
+  
+  "github": {
+    "enabled": true,
+    "silent": true,
+    "autoJobCancelation": true
+  },
+  
+  "regions": ["sin1"],  // Singapore region for speed
+  
+  "functions": {
+    "api/status.js": {
+      "maxDuration": 10,
+      "memory": 1024
+    }
+  },
+  
+  "crons": [
+    {
+      "path": "/api/status",
+      "schedule": "0 */6 * * *"
+    }
+  ],
+  
+  "public": true,
+  
+  "buildCommand": "echo 'Building NGL Spammer Pro...'",
+  "outputDirectory": "public",
+  
+  "installCommand": "npm install",
+  "devCommand": "npm run dev",
+  
+  "framework": null,
+  
+  "alias": ["ngl-spammer-pro.vercel.app"],
+  
+  "scope": "your-vercel-scope",
+  
+  "projectSettings": {
+    "framework": null,
+    "devCommand": "npx serve public",
+    "installCommand": "npm install",
+    "buildCommand": "echo 'No build required'",
+    "outputDirectory": "public",
+    "rootDirectory": null,
+    "nodeVersion": "18.x",
+    "createdAt": 1700000000000,
+    "autoExposeSystemEnvs": true,
+    "gitForkProtection": true,
+    "gitLFS": false,
+    "enablePreviewFeedback": false,
+    "protectionBypass": {},
+    "customerSupportCodeVisibility": false,
+    "gitComments": false,
+    "passwordProtection": {}
+  }
+}
