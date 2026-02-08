@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NGL SPAMMER PRO | Ultimate Message Bomb</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Orbitron:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/animations.css">
+    <link rel="icon" type="image/x-icon" href="assets/images/favicon.ico">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <div class="logo-container">
+                <i class="fas fa-bomb logo-icon"></i>
+                <h1 class="logo-text glitch-text">NGL SPAMMER PRO</h1>
+            </div>
+            <div class="status-indicator">
+                <span class="status-dot pulse"></span>
+                <span class="status-text">API: ONLINE</span>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Configuration Card -->
+            <section class="card config-card">
+                <div class="card-header">
+                    <i class="fas fa-cogs header-icon"></i>
+                    <h2>SPAM CONFIGURATION</h2>
+                </div>
+                
+                <div class="form-grid">
+                    <!-- Link Input -->
+                    <div class="form-group">
+                        <label for="linkInput" class="form-label">
+                            <i class="fas fa-link"></i> NGL LINK
+                        </label>
+                        <input type="text" id="linkInput" class="form-input" 
+                               placeholder="https://ngl.link/username" 
+                               value="https://ngl.link/">
+                        <p class="form-hint">Contoh: https://ngl.link/danztsuyou</p>
+                    </div>
+
+                    <!-- Message Count -->
+                    <div class="form-group">
+                        <label for="jumlahInput" class="form-label">
+                            <i class="fas fa-layer-group"></i> JUMLAH PESAN
+                        </label>
+                        <div class="range-container">
+                            <input type="range" id="jumlahSlider" min="1" max="100" value="10" class="range-slider">
+                            <input type="number" id="jumlahInput" min="1" max="1000" value="10" class="number-input">
+                        </div>
+                        <div class="range-labels">
+                            <span>Slow (1-10)</span>
+                            <span>Normal (11-50)</span>
+                            <span>BRUTAL (51-100)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Message Input -->
+                <div class="form-group">
+                    <label for="pesanInput" class="form-label">
+                        <i class="fas fa-comment-alt"></i> PESAN
+                    </label>
+                    <textarea id="pesanInput" class="form-textarea" 
+                              rows="3" 
+                              placeholder="Masukkan pesan yang akan dikirim...">Tes spam dari NGL Spammer Pro!</textarea>
+                    <div class="textarea-info">
+                        <span id="charCount">0/500 karakter</span>
+                        <span class="text-muted">Emoji: ✅ | Markdown: ❌</span>
+                    </div>
+                </div>
+
+                <!-- Attack Mode -->
+                <div class="mode-selection">
+                    <h3 class="mode-title">
+                        <i class="fas fa-rocket"></i> ATTACK MODE
+                    </h3>
+                    <div class="mode-grid">
+                        <label class="mode-card">
+                            <input type="radio" name="mode" value="normal" class="mode-radio" checked>
+                            <div class="mode-content">
+                                <h4>NORMAL MODE</h4>
+                                <p>1 detik delay • Aman</p>
+                            </div>
+                        </label>
+                        
+                        <label class="mode-card">
+                            <input type="radio" name="mode" value="fast" class="mode-radio">
+                            <div class="mode-content">
+                                <h4>FAST MODE</h4>
+                                <p>500ms delay • Agresif</p>
+                            </div>
+                        </label>
+                        
+                        <label class="mode-card">
+                            <input type="radio" name="mode" value="brutal" class="mode-radio">
+                            <div class="mode-content">
+                                <h4>BRUTAL MODE</h4>
+                                <p>No delay • Max power</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <!-- Control Buttons -->
+                <div class="button-group">
+                    <button id="startBtn" class="btn btn-primary btn-lg">
+                        <i class="fas fa-play"></i> START SPAM ATTACK
+                    </button>
+                    
+                    <button id="stopBtn" class="btn btn-danger btn-lg" disabled>
+                        <i class="fas fa-stop"></i> STOP ATTACK
+                    </button>
+                    
+                    <button id="testBtn" class="btn btn-secondary btn-lg">
+                        <i class="fas fa-vial"></i> TEST CONNECTION
+                    </button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-info">
+                        <span id="progressText">READY</span>
+                        <span id="percentage">0%</span>
+                    </div>
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Status Log Card -->
+            <section class="card log-card">
+                <div class="card-header">
+                    <i class="fas fa-terminal header-icon"></i>
+                    <h2>ATTACK LOG</h2>
+                </div>
+                
+                <div id="statusLog" class="log-content">
+                    <div class="log-entry log-info">
+                        <span class="log-time">[12:00:00]</span>
+                        <span class="log-text">NGL Spammer Pro v2.1.0 initialized</span>
+                    </div>
+                    <div class="log-entry log-info">
+                        <span class="log-time">[12:00:00]</span>
+                        <span class="log-text">API endpoint: https://api-faa.my.id/faa/ngl-spam</span>
+                    </div>
+                    <div class="log-entry log-info">
+                        <span class="log-time">[12:00:00]</span>
+                        <span class="log-text">Ready to launch attack...</span>
+                    </div>
+                </div>
+
+                <!-- Statistics -->
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-value text-success" id="sentCount">0</div>
+                        <div class="stat-label">SENT</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value text-danger" id="failedCount">0</div>
+                        <div class="stat-label">FAILED</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value text-warning" id="successRate">0%</div>
+                        <div class="stat-label">SUCCESS RATE</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-value text-info" id="timeElapsed">0s</div>
+                        <div class="stat-label">TIME</div>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="footer-content">
+                <p class="footer-text">
+                    <i class="fas fa-shield-alt"></i>
+                    For educational purposes only. Use responsibly.
+                    <span class="separator">|</span>
+                    Powered by <span class="highlight">Z- Quantum Engine</span>
+                </p>
+                <div class="footer-actions">
+                    <button onclick="copyDeployCommand()" class="footer-btn">
+                        <i class="fas fa-code"></i> Copy Deploy Command
+                    </button>
+                    <button onclick="showApiDocs()" class="footer-btn">
+                        <i class="fas fa-book"></i> API Docs
+                    </button>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/utils.js"></script>
+    <script src="assets/js/api.js"></script>
+    <script src="assets/js/main.js"></script>
+</body>
+</html>
