@@ -1,0 +1,148 @@
+/* ===== ANIMATIONS ===== */
+@keyframes glitch {
+    0%, 100% {
+        text-shadow: 
+            0 0 10px var(--primary),
+            0 0 20px var(--primary),
+            0 0 30px var(--primary);
+    }
+    50% {
+        text-shadow: 
+            0 0 10px var(--secondary),
+            0 0 20px var(--secondary),
+            0 0 30px var(--secondary);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+@keyframes shake {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes gradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-10px); }
+}
+
+/* ===== ANIMATION CLASSES ===== */
+.glitch-text {
+    animation: glitch 3s infinite;
+}
+
+.pulse {
+    animation: pulse 2s infinite;
+}
+
+.animate-shake {
+    animation: shake 0.15s ease-in-out 0s 3;
+}
+
+.slide-in {
+    animation: slideIn 0.5s ease-out;
+}
+
+.gradient-flow {
+    background: linear-gradient(135deg, var(--primary), var(--secondary), var(--info));
+    background-size: 400% 400%;
+    animation: gradientFlow 5s ease infinite;
+}
+
+.float {
+    animation: float 3s ease-in-out infinite;
+}
+
+/* ===== LOADING ANIMATION ===== */
+.loading-spinner {
+    width: 40px;
+    height: 40px;
+    border: 3px solid var(--border);
+    border-top-color: var(--primary);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    margin: 0 auto;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* ===== PROGRESS ANIMATION ===== */
+.progress-fill {
+    position: relative;
+    overflow: hidden;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.2),
+        transparent
+    );
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+}
+
+/* ===== HOVER EFFECTS ===== */
+.hover-glow {
+    transition: all 0.3s;
+}
+
+.hover-glow:hover {
+    box-shadow: 
+        0 0 15px var(--primary),
+        0 0 30px rgba(124, 58, 237, 0.3);
+}
+
+/* ===== TRANSITIONS ===== */
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.5s forwards;
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+.stagger-delay > * {
+    animation: fadeIn 0.5s forwards;
+    opacity: 0;
+}
+
+.stagger-delay > *:nth-child(1) { animation-delay: 0.1s; }
+.stagger-delay > *:nth-child(2) { animation-delay: 0.2s; }
+.stagger-delay > *:nth-child(3) { animation-delay: 0.3s; }
+.stagger-delay > *:nth-child(4) { animation-delay: 0.4s; }
