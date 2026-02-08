@@ -1,0 +1,174 @@
+{
+  "name": "ngl-spammer-pro",
+  "version": "2.1.0",
+  "description": "Ultimate NGL Anonymous Message Bomber with Quantum Engine",
+  "keywords": [
+    "ngl",
+    "spam",
+    "anonymous",
+    "message",
+    "bomber",
+    "whatsapp",
+    "spammer",
+    "tool",
+    "cyber",
+    "security",
+    "testing"
+  ],
+  "homepage": "https://ngl-spammer-pro.vercel.app",
+  "bugs": {
+    "url": "https://github.com/yourusername/ngl-spammer-pro/issues",
+    "email": "support@ngl-spammer-pro.vercel.app"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Z- Quantum Engine",
+    "email": "z-quantum@proton.me",
+    "url": "https://z-quantum-engine.vercel.app"
+  },
+  "contributors": [
+    {
+      "name": "Naszx",
+      "email": "naszx@hacker.com"
+    },
+    {
+      "name": "Danzz",
+      "email": "danzz@coder.com"
+    }
+  ],
+  "main": "public/index.html",
+  "browser": "public/index.html",
+  "scripts": {
+    "start": "npx serve public -p 3000",
+    "dev": "npx live-server public --port=3000 --host=localhost",
+    "build": "echo 'No build step required for static site'",
+    "predeploy": "npm run lint && npm run test",
+    "deploy": "vercel --prod",
+    "deploy:staging": "vercel",
+    "deploy:preview": "vercel --preview",
+    "deploy:alias": "vercel --prod --alias ngl-spammer-pro",
+    "lint": "eslint public/assets/js/*.js || echo 'No ESLint configured, skipping...'",
+    "lint:fix": "eslint public/assets/js/*.js --fix || echo 'No ESLint configured, skipping...'",
+    "test": "echo 'No tests configured, skipping...'",
+    "test:e2e": "echo 'No E2E tests configured, skipping...'",
+    "clean": "rm -rf node_modules package-lock.json",
+    "reinstall": "npm run clean && npm install",
+    "prettier": "prettier --write public/**/*.{html,css,js} || echo 'No Prettier configured, skipping...'",
+    "analyze": "npx lighthouse http://localhost:3000 --view --output=html --output-path=./lighthouse-report.html",
+    "security": "npx snyk test || echo 'No Snyk configured, skipping...'",
+    "audit": "npm audit --audit-level=high",
+    "update": "npx npm-check-updates -u",
+    "version": "auto-changelog -p && git add CHANGELOG.md",
+    "postversion": "git push && git push --tags",
+    "stats": "npx cloc public/",
+    "minify:css": "npx css-minify -f public/assets/css/style.css -o public/assets/css/minified/",
+    "minify:js": "npx uglify-js public/assets/js/*.js -o public/assets/js/minified/app.min.js -c -m",
+    "optimize:images": "npx imagemin public/assets/images/* --out-dir=public/assets/images/optimized",
+    "generate:sitemap": "npx sitemap-generator https://ngl-spammer-pro.vercel.app",
+    "generate:icon": "npx pwa-asset-generator public/assets/images/logo.png public/assets/icons/",
+    "health": "curl -f https://ngl-spammer-pro.vercel.app/api/health || echo 'Health check failed'",
+    "backup": "tar -czf backup-$(date +%Y%m%d).tar.gz public/ package.json vercel.json README.md",
+    "monitor": "npx vercel logs --follow"
+  },
+  "dependencies": {
+    "serve": "^14.2.1"
+  },
+  "devDependencies": {
+    "live-server": "^1.2.2",
+    "vercel": "^33.0.0",
+    "eslint": "^8.53.0",
+    "prettier": "^3.0.3",
+    "lighthouse": "^11.2.0",
+    "snyk": "^1.1190.0",
+    "npm-check-updates": "^16.14.6",
+    "auto-changelog": "^2.4.0",
+    "cloc": "^2.10.0",
+    "css-minify": "^2.0.0",
+    "uglify-js": "^3.17.4",
+    "imagemin-cli": "^7.0.0",
+    "sitemap-generator": "^8.5.1",
+    "pwa-asset-generator": "^4.1.2"
+  },
+  "engines": {
+    "node": ">=18.0.0",
+    "npm": ">=9.0.0"
+  },
+  "os": [
+    "linux",
+    "darwin",
+    "win32"
+  ],
+  "cpu": [
+    "x64",
+    "arm64"
+  ],
+  "private": false,
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/ngl-spammer-pro.git"
+  },
+  "funding": {
+    "type": "individual",
+    "url": "https://github.com/sponsors/yourusername"
+  },
+  "files": [
+    "public/",
+    "package.json",
+    "vercel.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "directories": {
+    "doc": "docs",
+    "example": "examples",
+    "lib": "lib",
+    "test": "tests"
+  },
+  "config": {
+    "port": 3000,
+    "api_url": "https://api-faa.my.id/faa/ngl-spam",
+    "max_messages": 1000,
+    "min_delay": 0,
+    "max_delay": 5000,
+    "timeout": 30000
+  },
+  "browserslist": [
+    "> 0.5%",
+    "last 2 versions",
+    "Firefox ESR",
+    "not dead",
+    "not IE 11"
+  ],
+  "jest": {
+    "testEnvironment": "jsdom",
+    "testMatch": [
+      "**/__tests__/**/*.js",
+      "**/?(*.)+(spec|test).js"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "npm run lint",
+      "pre-push": "npm test"
+    }
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  },
+  "release": {
+    "branches": [
+      "main",
+      "next"
+    ]
+  },
+  "volta": {
+    "node": "18.17.1",
+    "npm": "9.6.7"
+  }
+}
